@@ -1,19 +1,16 @@
-def my_function():
-    print("The Miles Per Gallon Application")
-    miles=int(input("Enter miles driven:\t"))
-    gallons=int(input("Enter gallons of gas used:\t"))
-    cost=float(input("Enter cost per gallon:\t"))
+def mpg(miles, gallons, cost):
+    miles_per_gallon = miles / gallons
+    total_gas_cost = gallons * cost
+    cost_per_mile = total_gas_cost / miles
+    print('Miles per gallon:', round(miles_per_gallon, 1))
+    print('Total gas cost:', round(total_gas_cost, 1))
+    print('Cost per mile:', round(cost_per_mile, 1))
 
-    miles_per_gallon=miles/gallons
-    miles_per_gallon=round(miles_per_gallon,1)
-    print("\n\nMiles per gallon:\t"+str(miles_per_gallon))
-    total_gas = gallons * cost
-    total_gas=round(total_gas,1)
-    print("Total Gas cost:\t"+str(total_gas))
-    cost_per_mile = total_gas / miles
-    cost_per_mile = round(cost_per_mile, 1)
-    print("Cost per mile:\t"+str(cost_per_mile))
+print("The Miles Gallon Application\n")
+miles = float(input('Enter miles driven: '))
+gallons = float(input('Enter gallons of gas used: '))
+cost = float(input('Enter cost per gallon: '))
 
-    print("\nBye!!")
+mpg(miles, gallons, cost)
 
-my_function()
+print('Bye')

@@ -1,19 +1,12 @@
-def myfun():
-    print("The area and Perimeter Application\n")
-
-    length=float(input("Please enter the length:\t"))
-    width=float(input("Please enter the width:\t"))
-
+def calculate_area_and_perimeter(length, width):
     area = length * width
     perimeter = 2 * (length + width)
+    print(f'Area: {area} \nPerimeter: {perimeter}')
 
-    print("\nArea = " + str(area))
-    print("Perimeter = " + str(perimeter))
+print("The area and perimeter app\n")
+length = float(input('Enter length: '))
+width = float(input('Enter width: '))
 
-    print(("\nBye!"))
+calculate_area_and_perimeter(length, width)
 
-def main():
-    myfun()
-
-if __name__=="__main__":
-    main()
+print('Bye')
