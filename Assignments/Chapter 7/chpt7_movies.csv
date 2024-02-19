@@ -1,0 +1,5 @@
+movies=[["Monty Python and the holy grail", 1975],
+["cat on a hot Tin Roof", 1958],["On the water front",1954]]
+
+fruits=[["Strawberry", "1000","$2,200"],["Apple","500","$1,100"],["Banana","50","$2,100"],
+["Pears","500","$3,100"]]
