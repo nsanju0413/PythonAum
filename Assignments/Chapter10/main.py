@@ -5,7 +5,9 @@ def main():
     phone = get_phone()
     first_name = get_first_name(full_name)
     formatted_phone = format_phone_number(phone)
-    print(f"\nHi {first_name}, thanks for creating an account.\nWe'll text your confirmation code to this number: {formatted_phone}")
+    print(
+        f"\nHi {first_name}, thanks for creating an account.\nWe'll text your confirmation code to this number: {formatted_phone}")
+
 
 def get_fullname():
     while True:
@@ -27,8 +29,8 @@ def get_password():
             elif char.isupper():
                 cap_letter = True
         if digit == False or \
-           cap_letter == False or \
-           len(password) < 8:
+                cap_letter == False or \
+                len(password) < 8:
             print(f"Password must be 8 characters or more \n"
                   f"with at least one digit and one uppercase "
                   f"letter.")
