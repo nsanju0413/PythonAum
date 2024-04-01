@@ -8,7 +8,7 @@ class MonthlySales:
                     month, amount = parts
                     self.sales[month.lower()] = float(amount)
                 else:
-                    print(f"Ignoring invalid line: {line.strip()}")
+                    print(f"Ignoring  invalid line: {line.strip()}")
 
     def view_sales(self, month):
         if month.lower() in self.sales:

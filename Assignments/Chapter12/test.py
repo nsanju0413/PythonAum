@@ -14,7 +14,7 @@ class MonthlySales:
         if month.lower() in self.sales:
             print(f"Sales amount for {month.capitalize()} is {self.sales[month.lower()]:,.2f}.")
         else:
-            print("Invalid three-letter month.")
+            print("Invalid three-letter  month.")
 
     def edit_sales(self, month, amount):
         if month.lower() in self.sales:
