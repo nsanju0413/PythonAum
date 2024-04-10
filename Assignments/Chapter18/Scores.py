@@ -12,7 +12,7 @@ df = pd.DataFrame(data)
 # Cap the Quiz scores at 100
 df['Quiz'] = df['Quiz'].apply(lambda x: min(x, 100))
 
-file_name = 'sanju.xlsx'
+file_name = 'Sanju.xlsx'
 df.to_excel(file_name, index=False)
 
 df = pd.read_excel(file_name, index_col='Week')
