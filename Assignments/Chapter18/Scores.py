@@ -9,9 +9,10 @@ data = {
 
 df = pd.DataFrame(data)
 
-df['Quiz'] = (df['Quiz'] / 20) * 100
+# Cap the Quiz scores at 100
+df['Quiz'] = df['Quiz'].apply(lambda x: min(x, 100))
 
-file_name = 'sanju.xlsx'
+file_name = 'Sanju.xlsx'
 df.to_excel(file_name, index=False)
 
 df = pd.read_excel(file_name, index_col='Week')
@@ -19,9 +20,9 @@ df = pd.read_excel(file_name, index_col='Week')
 plt.figure(figsize=(10, 6))
 plt.plot(df.index, df['Assmt'], marker='o', label='Assignment Score')
 plt.plot(df.index, df['Quiz'], marker='o', label='Quiz Score')
-plt.title('srinivas muniganti')
-plt.xlabel('Week')
-plt.ylabel('Score')
+plt.title('Sanjeevlu Buggargani\'s  Assmt/Quiz Comparison Data for Week 1 thru 5')
+plt.xlabel('Weeks')
+plt.ylabel('Scores')
 plt.legend()
 plt.grid(True)
 plt.xticks(rotation=45)
