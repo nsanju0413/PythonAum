@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #chatbox {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            height: 80%;
+        }
+
+        #messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .message {
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .user {
+            background-color: #dbeafe;
+            align-self: flex-end;
+            color: #1e3a8a;
+        }
+
+        .bot {
+            background-color: #f3f4f6;
+            align-self: flex-start;
+            color: #374151;
+        }
+
+        #input-form {
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        #input-form input {
+            flex: 1;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        #input-form input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+        }
+
+        #input-form button {
+            margin-left: 8px;
+            padding: 10px 16px;
+            background-color: #3b82f6;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        #input-form button:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+<h1>DeepSeek AI ChatBot</h1>
+<div id="chatbox">
+    <div id="messages"></div>
+    <form id="input-form">
+        <input type="text" id="message-input" placeholder="Type your message here..." required />
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('input-form');
+    const messagesDiv = document.getElementById('messages');
+    const input = document.getElementById('message-input');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const userMessage = input.value.trim();
+        if (!userMessage) return;
+
+        // Display user message
+        const userDiv = document.createElement('div');
+        userDiv.classList.add('message', 'user');
+        userDiv.textContent = userMessage;
+        messagesDiv.appendChild(userDiv);
+
+        // Send to server and get response
+        const response = await fetch('/get_response', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userMessage }),
+        });
+        const data = await response.json();
+
+        // Display bot response
+        const botDiv = document.createElement('div');
+        botDiv.classList.add('message', 'bot');
+        botDiv.textContent = data.response;
+        messagesDiv.appendChild(botDiv);
+
+        // Clear input and scroll to bottom
+        input.value = '';
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    });
+</script>
+</body>
+</html>
